@@ -20,7 +20,7 @@ source:
     - check_poly.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win or osx]
 
 requirements:
