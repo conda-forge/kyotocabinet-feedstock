@@ -18,9 +18,14 @@ source:
     # the Makefile, which keeps failing on *circleci* with and error that could not be
     # reproduced locally.
     - check_poly.patch
+    # In the original source, the -march=native flag is set manually in the configure script,
+    # which overrides the -march=nocona flag set by the conda build environment.
+    # This patch removes a section of the configure script, responsible for local system
+    # optimizations.
+    - march.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win or osx]
 
 requirements:
