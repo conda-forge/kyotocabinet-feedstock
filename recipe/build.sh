@@ -4,6 +4,8 @@ set -e
 
 export CFLAGS=-march=nocona
 export CXXFLAGS=-march=nocona
+export CPPFLAGS=-march=nocona
+export LDFLAGS=-march=nocona
 
 ./configure --prefix=$PREFIX
 
