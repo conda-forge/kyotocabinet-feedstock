@@ -1,6 +1,6 @@
 {% set name = "kyotocabinet" %}
-{% set version = "1.2.76" %}
-{% set sha256 = "812a2d3f29c351db4c6f1ff29d94d7135f9e601d7cc1872ec1d7eed381d0d23c" %}
+{% set version = "1.2.77" %}
+{% set sha256 = "56899329384cc6f0f1f8aa3f1b41001071ca99c1d79225086a7f3575c0209de6" %}
 
 package:
   name: {{ name|lower }}
@@ -25,7 +25,7 @@ source:
     - march.patch
 
 build:
-  number: 1
+  number: 0
   skip: True  # [win or osx]
 
 requirements:
