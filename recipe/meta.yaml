@@ -1,6 +1,6 @@
 {% set name = "kyotocabinet" %}
-{% set version = "1.2.76" %}
-{% set sha256 = "812a2d3f29c351db4c6f1ff29d94d7135f9e601d7cc1872ec1d7eed381d0d23c" %}
+{% set version = "1.2.77" %}
+{% set sha256 = "56899329384cc6f0f1f8aa3f1b41001071ca99c1d79225086a7f3575c0209de6" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +8,9 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: http://fallabs.com/kyotocabinet/pkg/{{ name }}-{{ version }}.tar.gz
+  url: https://fallabs.com/kyotocabinet/pkg/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-    # This patch is need for compatibility with newer compiler versions (GCC version > 4).
-    # Without it, the code will not compile.
-    - kcdbext.patch
     # This patch has nothing to do with the code. It deactivates one of the check tasks in
     # the Makefile, which keeps failing on *circleci* with and error that could not be
     # reproduced locally.
@@ -26,7 +23,7 @@ source:
 
 build:
   number: 1
-  skip: True  # [win or osx]
+  skip: True  # [win]
 
 requirements:
   build:
@@ -40,7 +37,8 @@ requirements:
 test:
   commands:
     - test -e $PREFIX/include/kccommon.h
-    - test -e $PREFIX/lib/libkyotocabinet.so
+    - test -e $PREFIX/lib/libkyotocabinet.so [linux]
+    - test -e $PREFIX/lib/libkyotocabinet.dylib [osx]
     - test -e $PREFIX/lib/libkyotocabinet.a
     - test -e $PREFIX/lib/pkgconfig/kyotocabinet.pc
     - kchashmgr version
