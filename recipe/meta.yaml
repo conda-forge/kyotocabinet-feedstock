@@ -11,6 +11,8 @@ source:
   url: https://fallabs.com/kyotocabinet/pkg/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
+    # Newer ubuntu gcc's have stativ inline functions which the -ansi flag disables
+    - configure.patch  # [linux]
     # This patch has nothing to do with the code. It deactivates one of the check tasks in
     # the Makefile, which keeps failing on *circleci* with and error that could not be
     # reproduced locally.
