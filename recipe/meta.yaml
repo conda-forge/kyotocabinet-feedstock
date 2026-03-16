@@ -1,6 +1,6 @@
 {% set name = "kyotocabinet" %}
-{% set version = "1.2.76" %}
-{% set sha256 = "812a2d3f29c351db4c6f1ff29d94d7135f9e601d7cc1872ec1d7eed381d0d23c" %}
+{% set version = "1.2.78" %}
+{% set sha256 = "494c6383a94bd7a64425223a770821128e99ebae68b598714e782b566772b3af" %}
 
 package:
   name: {{ name|lower }}
@@ -25,8 +25,8 @@ source:
     - march.patch
 
 build:
-  number: 1
-  skip: True  # [win or osx]
+  number: 0
+  skip: true  # [win or osx]
 
 requirements:
   build:
@@ -50,7 +50,7 @@ about:
   license: GPL-3.0
   license_family: GPL
   license_file: COPYING
-  summary: 'Kyoto Cabinet is a library of routines for managing a database'
+  summary: Kyoto Cabinet is a library of routines for managing a database
 
   description: |
     Kyoto Cabinet is a library of routines for managing a database. The database is a simple data file containing
